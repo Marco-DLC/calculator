@@ -36,4 +36,12 @@ const operate = function () {
     return `${num1} ${operator} ${num2} = ${operation}`;
 }
 
-console.log(operate());
+const buttons = document.querySelectorAll('button')
+
+buttons.forEach((button) => {
+    if (button.textContent !== 'Clear') {
+        button.addEventListener('click', () => {
+            return button.textContent;
+        })
+    }
+});
