@@ -18,7 +18,7 @@ let num1 = 0;
 let num2 = 0;
 
 // Division character for copy and pasting: ÷
-let operator = '÷';
+let operator = '';
 
 const operate = function () {
     let operation = '';
@@ -38,10 +38,33 @@ const operate = function () {
 
 const buttons = document.querySelectorAll('button')
 
+let userSelectedKey = '';
+const display = document.querySelector('#displayOutput');
+
+const dummyText = document.createElement('p')
+dummyText.textContent = '0'
+
+display.appendChild(dummyText);
+
 buttons.forEach((button) => {
     if (button.textContent !== 'Clear') {
         button.addEventListener('click', () => {
-            return button.textContent;
+            if (display.firstChild === dummyText) {
+                display.removeChild(dummyText);
+            };
+
+            userSelectedKey = button.textContent;
+
+            display.textContent += userSelectedKey;
         })
     }
 });
+
+const clearBtn = document.querySelector('#clear');
+
+clearBtn.addEventListener('click', () => {
+    display.textContent = '';
+    if (display.firstChild !== dummyText) {
+        display.appendChild(dummyText);
+    }
+})

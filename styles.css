@@ -32,6 +32,12 @@ body {
     font-size:xx-large;
     color:white;
     padding:10px;
+    min-height:57px;
+    box-sizing:border-box;
+}
+
+p {
+    margin:0;
 }
 
 #displayOutput,
