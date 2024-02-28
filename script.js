@@ -18,13 +18,13 @@ function operate() {
     let operation = '';
 
     if (operator === '+') {
-        operation = add(num1, num2);
+        operation = add(+num1, +num2);
     } else if (operator === '-') {
-        operation = subtract(num1, num2);
+        operation = subtract(+num1, +num2);
     } else if (operator === 'x') {
-        operation = multiply(num1, num2);
+        operation = multiply(+num1, +num2);
     } else if (operator === '÷') {
-        operation = divide(num1, num2);
+        operation = divide(+num1, +num2);
     }
     if (num1 === 0 && num2 === 0 && operator === '÷') {
         display.textContent += `= y tho?`;
@@ -39,12 +39,12 @@ function updateNums(button) {
         display.removeChild(dummyText);
     }
     if (operator === '') {
-        num1 += +button.textContent;
+        num1 += button.textContent;
         display.textContent += button.textContent;
 
         console.log(num1);
     } else if (operator !== '') {
-        num2 += +button.textContent;
+        num2 += button.textContent;
         display.textContent += button.textContent;
 
         console.log(num2);
