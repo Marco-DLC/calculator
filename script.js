@@ -15,22 +15,24 @@ function divide(arg1, arg2) {
 };
 
 function operate() {
-    let operation = '';
+    if (num2 !== '0' && !display.textContent.includes('=')) {
+        let operation = '';
 
-    if (operator === '+') {
-        operation = add(+num1, +num2);
-    } else if (operator === '-') {
-        operation = subtract(+num1, +num2);
-    } else if (operator === 'x') {
-        operation = multiply(+num1, +num2);
-    } else if (operator === '÷') {
-        operation = divide(+num1, +num2);
-    }
-    if (num1 === 0 && num2 === 0 && operator === '÷') {
-        display.textContent += `= y tho?`;
-    } else {
-        display.textContent += `= ${operation}`;
-        console.log(operation);
+        if (operator === '+') {
+            operation = add(+num1, +num2);
+        } else if (operator === '-') {
+            operation = subtract(+num1, +num2);
+        } else if (operator === 'x') {
+            operation = multiply(+num1, +num2);
+        } else if (operator === '÷') {
+            operation = divide(+num1, +num2);
+        }
+        if (num1 === 0 && num2 === 0 && operator === '÷') {
+            display.textContent += `= y tho?`;
+        } else {
+            display.textContent += `= ${operation}`;
+            console.log(operation);
+        }
     }
 }
 
