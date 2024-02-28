@@ -45,11 +45,15 @@ function updateNums(button) {
         display.textContent += button.textContent;
 
         console.log(num1);
-    } else if (operator !== '') {
+    } else if (operator !== '' &&
+        !display.textContent.includes('=')) {
         num2 += button.textContent;
         display.textContent += button.textContent;
 
         console.log(num2);
+    } else if (display.textContent.includes('=')) {
+        clearDisplay();
+        updateNums(button);
     }
 }
 
@@ -68,6 +72,13 @@ function addDecimal(button) {
         (!num2.includes('.') && operator !== '')) {
         updateNums(button)
     }
+}
+
+function clearDisplay() {
+    display.textContent = '';
+    num1 = '0';
+    num2 = '0';
+    operator = '';
 }
 
 let num1 = '0';
@@ -107,10 +118,7 @@ buttons.forEach((button) => {
 const clearBtn = document.querySelector('#clear');
 
 clearBtn.addEventListener('click', () => {
-    display.textContent = '';
-    num1 = 0;
-    num2 = 0;
-    operator = '';
+    clearDisplay();
     if (display.firstChild !== dummyText) {
         display.appendChild(dummyText);
     }
