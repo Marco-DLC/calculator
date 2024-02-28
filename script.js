@@ -31,6 +31,7 @@ function operate() {
             display.textContent += `= y tho?`;
         } else {
             display.textContent += `= ${operation}`;
+            num1 = operation;
             console.log(operation);
         }
     }
@@ -64,6 +65,10 @@ function updateOperator(button) {
         display.textContent += button.textContent;
 
         console.log(operator);
+    } else if (display.textContent.includes('=')) {
+        num2 = '0';
+        operator = button.textContent;
+        display.textContent = num1 + operator;
     }
 }
 
