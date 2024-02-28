@@ -27,13 +27,17 @@ function operate() {
         } else if (operator === '÷') {
             operation = divide(+num1, +num2);
         }
-        if (num1 === 0 && num2 === 0 && operator === '÷') {
+        if (num1 == 0 && num2 == 0 && operator === '÷') {
             display.textContent += `= y tho?`;
         } else {
             display.textContent += `= ${operation}`;
             num1 = operation;
             console.log(operation);
         }
+    } else if (display.textContent.includes('=')) {
+        display.textContent = '';
+        display.textContent = num1 + operator + +num2;
+        operate();
     }
 }
 
