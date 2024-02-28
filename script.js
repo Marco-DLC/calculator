@@ -29,8 +29,8 @@ function operate() {
     if (num1 === 0 && num2 === 0 && operator === '÷') {
         display.textContent += `= y tho?`;
     } else {
-    display.textContent += `= ${operation}`;
-    console.log(operation);
+        display.textContent += `= ${operation}`;
+        console.log(operation);
     }
 }
 
@@ -61,9 +61,16 @@ function updateOperator(button) {
     }
 }
 
-let num1 = 0;
+function addDecimal(button) {
+    if (!num1.includes('.') ||
+        (!num2.includes('.') && operator !== '')) {
+        updateNums(button)
+    }
+}
+
+let num1 = '0';
 let operator = '';
-let num2 = 0;
+let num2 = '0';
 
 const display = document.querySelector('#displayOutput');
 
@@ -76,11 +83,18 @@ const buttons = document.querySelectorAll('button')
 buttons.forEach((button) => {
     if (button.textContent !== 'Clear') {
         button.addEventListener('click', () => {
+            
             if (button.classList.contains('number')) {
-                return updateNums(button);
+                if (button.id === "decimal") {
+                    return addDecimal(button);
+                } else {
+                    return updateNums(button);
+                }
+
             } else if (button.classList.contains('operator') &&
                 button.id !== 'equals') {
                 return updateOperator(button)
+                
             } else if (button.id === 'equals') {
                 return operate();
             }
